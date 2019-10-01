@@ -9,13 +9,13 @@ namespace ClinkedIn_Blue_Rangers.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public List<Service> Services { get; set; }
-        public List<Interest> Interests { get; set; }
+        public Services Service { get; set; }
+        public Interests Interest { get; set; }
         public List<Clinker> Friends { get; set; }
         public List<Clinker> Enemies { get; set; }
     }
 
-    public enum Service
+    public enum Services
     {
         SellsTobacco,
         FenceContraband,
@@ -23,7 +23,7 @@ namespace ClinkedIn_Blue_Rangers.Models
         TeachToRead
     }
 
-    public enum Interest
+    public enum Interests
     {
         Murder,
         IndecentExposure,
