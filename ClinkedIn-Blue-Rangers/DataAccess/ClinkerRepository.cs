@@ -13,21 +13,57 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             new Clinker
             {
                 Name = "OJ",
-                Service = Services.MakeShiv,
-                Interest = Interests.Murder
+                Service = new List<Services>
+                {
+                    Services.MakeShiv,
+                    Services.FenceContraband
+                },
+                Interest = new List<Interests>
+                {
+                    Interests.Arson,
+                    Interests.IndecentExposure
+                }
             },
             new Clinker
             {
                 Name = "Phil Cosby",
-                Service = Services.TeachToRead,
-                Interest = Interests.IndecentExposure
+                Service = new List<Services>
+                {
+                    Services.SellsTobacco,
+                    Services.TeachToRead
+                },
+                Interest = new List<Interests>
+                {
+                    Interests.Murder,
+                    Interests.Fraud
+                }
             },
             new Clinker
             {
                 Name = "Charles Manson",
-                Service = Services.FenceContraband,
-                Interest = Interests.Fraud
+                Service = new List<Services>
+                {
+                    Services.FenceContraband,
+                    Services.MakeShiv
+                },
+                Interest = new List<Interests>
+                {
+                    Interests.UnlicensedSurgeries,
+                    Interests.Larceny
+                }
             },
         };
+
+        public List<Clinker> GetAll()
+        {
+            return _clinkers;
+        }
+
+        public List<Clinker> GetInterest(string interest)
+        {
+                var clinkerWithSameInterest = _clinkers.Where(c => c.Interest.ToString() == interest)
+                    .ToList();
+                return clinkerWithSameInterest;
+        }
     }
 }
