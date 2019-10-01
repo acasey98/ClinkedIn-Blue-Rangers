@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ClinkedIn_Blue_Rangers.Commands;
+using ClinkedIn_Blue_Rangers.Models;
+using ClinkedIn_Blue_Rangers.DataAccess;
 
 namespace ClinkedIn_Blue_Rangers.Controllers
 {
@@ -12,9 +15,10 @@ namespace ClinkedIn_Blue_Rangers.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Clinker>> GetAllClinkers()
         {
-            return new string[] { "value1", "value2" };
+            var repo = new ClinkerRepository();
+            return repo.GetAll();
         }
 
         // GET api/values/5
@@ -26,8 +30,22 @@ namespace ClinkedIn_Blue_Rangers.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult CreateClinker(AddClinkerCommand newClinkerCommand)
         {
+            var newClinker = new Clinker
+            {
+                Id = Guid.NewGuid(),
+                Name = newClinkerCommand.Name,
+                Service = newClinkerCommand.Service,
+                Interest = newClinkerCommand.Interest,
+                Friends = newClinkerCommand.Friends,
+                Enemies = newClinkerCommand.Enemies
+            };
+
+            var repo = new ClinkerRepository();
+            var createdClinker = repo.Add(newClinker);
+
+            return Created($"api/clinkers/{createdClinker.Name}", createdClinker);
         }
 
         // PUT api/values/5
