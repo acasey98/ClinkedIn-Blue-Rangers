@@ -28,6 +28,12 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                 Service = Services.FenceContraband,
                 Interest = Interests.Fraud
             },
+            new Clinker
+            {
+                Name = "Daniel 'tekashi69' Hernandez",
+                Service = Services.SellsTobacco,
+                Interest = Interests.Arson
+            },
         };
     }
 }
