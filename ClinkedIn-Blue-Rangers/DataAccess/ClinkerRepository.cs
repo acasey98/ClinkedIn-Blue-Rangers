@@ -12,15 +12,21 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
         {
             new Clinker
             {
-
+                Name = "OJ",
+                Service = Services.MakeShiv,
+                Interest = Interests.Murder
             },
             new Clinker
             {
-
+                Name = "Phil Cosby",
+                Service = Services.TeachToRead,
+                Interest = Interests.IndecentExposure
             },
             new Clinker
             {
-
+                Name = "Charles Manson",
+                Service = Services.FenceContraband,
+                Interest = Interests.Fraud
             },
         };
     }
