@@ -12,15 +12,31 @@ namespace ClinkedIn_Blue_Rangers.Controllers
     [ApiController]
     public class ClinkersController : ControllerBase
     {
-        [HttpGet("{interest}")]
+        [HttpGet]
+        public ActionResult<List<Clinker>> Get()
+        {
+            var repo = new ClinkerRepository();
+            return repo.GetAll();
+        }
+
+        [HttpGet("friends/{id}")]
+        public ActionResult<List<Clinker>> GetClinkersFriends(int id)
+        {
+            var repo = new ClinkerRepository();
+            var clinker = repo.GetById(id);
+            return clinker.Friends;
+        }
+   
+
+        [HttpGet("interest/{interest}")]
         public ActionResult <List<Clinker>> GetByInterest(int interest)
         {
             var repo = new ClinkerRepository();
             return repo.GetInterest(interest);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetClinkersServices(Guid id)
+        [HttpGet("services/{id}")]
+        public IActionResult GetClinkersServices(int id)
         {
             var repo = new ClinkerRepository();
 
