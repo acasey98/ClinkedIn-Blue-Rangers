@@ -18,5 +18,15 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             var repo = new ClinkerRepository();
             return repo.GetInterest(interest);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetClinkersServices(Guid id)
+        {
+            var repo = new ClinkerRepository();
+
+            var clinker = repo.GetById(id);
+            return Ok(clinker.Service);
+        }
+
     }
 }
