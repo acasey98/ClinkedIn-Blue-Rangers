@@ -55,10 +55,24 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             new Clinker
             {
                 Name = "Daniel 'tekashi69' Hernandez",
-                Service = Services.SellsTobacco,
-                Interest = Interests.Arson
+                Service = new List<Service>
+                {
+                  Services.SellsTobacco
+                },
+                Interest = new List<Interest>
+                {
+                  Interests.Arson
+                }
             },
+
         };
+      
+        public Clinker GetById(Guid id)
+        {
+            var clinker =_clinkers.FirstOrDefault(c => c.Id == id);
+            return clinker;
+
+        }
 
         public List<Clinker> GetAll()
         {
@@ -72,4 +86,5 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                 return clinkerWithSameInterest;
         }
     }
+
 }
