@@ -55,8 +55,14 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             new Clinker
             {
                 Name = "Daniel 'tekashi69' Hernandez",
-                Service = Services.SellsTobacco,
-                Interest = Interests.Arson
+                Service = new List<Services>
+                {
+                    Services.SellsTobacco
+                },
+                Interest = new List<Interests>
+                {
+                    Interests.Arson
+                }
             },
         };
 
