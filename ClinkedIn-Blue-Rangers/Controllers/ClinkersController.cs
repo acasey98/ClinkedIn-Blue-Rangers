@@ -27,6 +27,13 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             return clinker.Friends;
         }
    
+        [HttpGet("enemies/{id}")]
+        public ActionResult<List<Clinker>> GetClinkersEnemies(int id)
+        {
+            var repo = new ClinkerRepository();
+            var clinker = repo.GetById(id);
+            return clinker.Enemies;
+        }
 
         [HttpGet("interest/{interest}")]
         public ActionResult <List<Clinker>> GetByInterest(int interest)
