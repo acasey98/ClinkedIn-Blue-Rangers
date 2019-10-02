@@ -57,25 +57,36 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                 Name = "Daniel 'tekashi69' Hernandez",
                 Service = new List<Services>
                 {
-                    Services.SellsTobacco
+                  Services.SellsTobacco,
+                  Services.TeachToRead
                 },
                 Interest = new List<Interests>
                 {
-                    Interests.Arson
+                  Interests.Arson,
+                  Interests.UnlicensedSurgeries
                 }
             },
+
         };
+      
+        public Clinker GetById(Guid id)
+        {
+            var clinker =_clinkers.FirstOrDefault(c => c.Id == id);
+            return clinker;
+
+        }
 
         public List<Clinker> GetAll()
         {
             return _clinkers;
         }
 
-        public List<Clinker> GetInterest(string interest)
+        public List<Clinker> GetInterest(int interest)
         {
-                var clinkerWithSameInterest = _clinkers.Where(c => c.Interest.ToString() == interest)
+                var clinkerWithSameInterest = _clinkers.Where(c => c.Interest.Contains((Interests)interest))
                     .ToList();
                 return clinkerWithSameInterest;
         }
     }
+
 }

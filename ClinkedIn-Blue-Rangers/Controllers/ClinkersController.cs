@@ -18,13 +18,21 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             var repo = new ClinkerRepository();
             return repo.GetAll();
         }
-    /*    [HttpGet("{id}")]
-        ActionResult<List<Clinker>> GetClinkersFriends(Guid id)
+
+       [HttpGet("{id}")]
+        public ActionResult<List<Clinker>> GetClinkersFriends(Guid id)
         {
             var repo = new ClinkerRepository();
             var clinker = repo.GetById(id);
             return clinker.Friends;
-        }*/
+        }
    
+
+        [HttpGet("{interest}")]
+        public ActionResult <List<Clinker>> GetByInterest(int interest)
+        {
+            var repo = new ClinkerRepository();
+            return repo.GetInterest(interest);
+        }
     }
 }
