@@ -24,7 +24,12 @@ namespace ClinkedIn_Blue_Rangers.Controllers
         {
             var repo = new ClinkerRepository();
             var clinker = repo.GetById(id);
-            return clinker.Friends;
+            var clinkerFriends = new List<Clinker>();
+            foreach(int friendId in clinker.Friends)
+            {
+                clinkerFriends.Add(repo.GetById(friendId));
+            }
+            return clinkerFriends;
         }
    
         [HttpGet("enemies/{id}")]
@@ -32,7 +37,12 @@ namespace ClinkedIn_Blue_Rangers.Controllers
         {
             var repo = new ClinkerRepository();
             var clinker = repo.GetById(id);
-            return clinker.Enemies;
+            var clinkerEnemies = new List<Clinker>();
+            foreach(int enemyId in clinker.Enemies)
+            {
+                clinkerEnemies.Add(repo.GetById(enemyId));
+            }
+            return clinkerEnemies;
         }
 
         [HttpGet("interest/{interest}")]
@@ -49,6 +59,17 @@ namespace ClinkedIn_Blue_Rangers.Controllers
 
             var clinker = repo.GetById(id);
             return Ok(clinker.Service);
+        }
+        [HttpGet("sentence/{id}")]
+        public ActionResult<int> GetDaysLeftInSentence(int id)
+        {
+            var repo = new ClinkerRepository();
+            var clinker = repo.GetById(id);
+            var today = DateTime.Now;
+            TimeSpan daysServed = clinker.DateConvicted - today;
+            var daysServedAbs = Math.Abs(daysServed.Days);
+            var daysLeft = (clinker.DaysSentenced - daysServedAbs);
+            return daysLeft;
         }
 
     }
