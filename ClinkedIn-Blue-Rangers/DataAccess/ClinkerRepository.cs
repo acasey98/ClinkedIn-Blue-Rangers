@@ -59,9 +59,9 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             return _clinkers;
         }
 
-        public List<Clinker> GetInterest(string interest)
+        public List<Clinker> GetInterest(int interest)
         {
-                var clinkerWithSameInterest = _clinkers.Where(c => c.Interest.ToString() == interest)
+                var clinkerWithSameInterest = _clinkers.Where(c => c.Interest.Contains((Interests)interest))
                     .ToList();
                 return clinkerWithSameInterest;
         }
