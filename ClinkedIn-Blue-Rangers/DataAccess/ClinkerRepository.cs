@@ -30,6 +30,13 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                     {
                         Name = "Bacon"
                     }
+                },
+                Enemies = new List<Clinker>
+                {
+                    new Clinker
+                    {
+                        Name = "Toothpaste"
+                    }
                 }
             },
             new Clinker
