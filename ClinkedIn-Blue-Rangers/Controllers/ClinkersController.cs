@@ -18,6 +18,5 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             var repo = new ClinkerRepository();
             return repo.GetInterest(interest);
         }
-
     }
 }

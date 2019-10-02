@@ -52,7 +52,29 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                     Interests.Larceny
                 }
             },
+            new Clinker
+            {
+                Name = "Daniel 'tekashi69' Hernandez",
+                Service = new List<Services>
+                {
+                  Services.SellsTobacco,
+                  Services.TeachToRead
+                },
+                Interest = new List<Interests>
+                {
+                  Interests.Arson,
+                  Interests.UnlicensedSurgeries
+                }
+            },
+
         };
+      
+        public Clinker GetById(Guid id)
+        {
+            var clinker =_clinkers.FirstOrDefault(c => c.Id == id);
+            return clinker;
+
+        }
 
         public List<Clinker> GetAll()
         {
@@ -66,4 +88,5 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                 return clinkerWithSameInterest;
         }
     }
+
 }
