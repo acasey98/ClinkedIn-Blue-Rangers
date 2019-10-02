@@ -12,6 +12,7 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
         {
             new Clinker
             {
+                Id = 0,
                 Name = "OJ",
                 Service = new List<Services>
                 {
@@ -22,10 +23,18 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                 {
                     Interests.Arson,
                     Interests.IndecentExposure
+                },
+                Friends = new List<Clinker>
+                {
+                    new Clinker
+                    {
+                        Name = "Bacon"
+                    }
                 }
             },
             new Clinker
             {
+                Id = 1,
                 Name = "Phil Cosby",
                 Service = new List<Services>
                 {
@@ -40,6 +49,7 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             },
             new Clinker
             {
+                Id = 2,
                 Name = "Charles Manson",
                 Service = new List<Services>
                 {
@@ -69,7 +79,7 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
 
         };
       
-        public Clinker GetById(Guid id)
+        public Clinker GetById(int id)
         {
             var clinker =_clinkers.FirstOrDefault(c => c.Id == id);
             return clinker;

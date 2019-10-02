@@ -19,8 +19,8 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             return repo.GetAll();
         }
 
-       [HttpGet("{id}")]
-        public ActionResult<List<Clinker>> GetClinkersFriends(Guid id)
+        [HttpGet("friends/{id}")]
+        public ActionResult<List<Clinker>> GetClinkersFriends(int id)
         {
             var repo = new ClinkerRepository();
             var clinker = repo.GetById(id);
@@ -28,15 +28,15 @@ namespace ClinkedIn_Blue_Rangers.Controllers
         }
    
 
-        [HttpGet("{interest}")]
+        [HttpGet("interest/{interest}")]
         public ActionResult <List<Clinker>> GetByInterest(int interest)
         {
             var repo = new ClinkerRepository();
             return repo.GetInterest(interest);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetClinkersServices(Guid id)
+        [HttpGet("services/{id}")]
+        public IActionResult GetClinkersServices(int id)
         {
             var repo = new ClinkerRepository();
 
