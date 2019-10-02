@@ -28,6 +28,16 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                 Service = Services.FenceContraband,
                 Interest = Interests.Fraud
             },
+
         };
+
+        public Clinker GetById(Guid id)
+        {
+            var clinker =_clinkers.FirstOrDefault(c => c.Id == id);
+            return clinker;
+
+        }
+
     }
+
 }

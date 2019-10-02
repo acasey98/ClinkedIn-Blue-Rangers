@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClinkedIn_Blue_Rangers.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinkedIn_Blue_Rangers.Controllers
@@ -22,6 +23,15 @@ namespace ClinkedIn_Blue_Rangers.Controllers
         public ActionResult<string> Get(int id)
         {
             return "value";
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetClinkersServices(Guid id)
+        {
+            var repo = new ClinkerRepository();
+
+            var clinker = repo.GetById(id);
+            return Ok(clinker.Service);
         }
 
         // POST api/values
