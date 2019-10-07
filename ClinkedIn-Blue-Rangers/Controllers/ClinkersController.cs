@@ -48,11 +48,13 @@ namespace ClinkedIn_Blue_Rangers.Controllers
 
         // POST api/values
         [HttpPost]
-        public IActionResult CreateClinker(AddClinkerCommand newClinkerCommand)
-        {
+        public IActionResult CreateClinker(AddClinkerCommand newClinkerCommand, ClinkerRepository cRepo)
+        {            
+            var intId = cRepo.GetAll().Count() + 1;
             var newClinker = new Clinker
             {
-                Id = Guid.NewGuid(),
+                Id = intId,
+                UniqueId = Guid.NewGuid(),
                 Name = newClinkerCommand.Name,
                 Service = newClinkerCommand.Service,
                 Interest = newClinkerCommand.Interest,
@@ -94,7 +96,7 @@ namespace ClinkedIn_Blue_Rangers.Controllers
         }
 
         [HttpPut("{id}")]
-        public void updateClinkerCommand(UpdateClinkerCommand updatedClinkerCommand, Guid)
+        public void updateClinkerCommand(UpdateClinkerCommand updatedClinkerCommand, Guid id)
         {
             var updatedClinker = new Clinker();
             

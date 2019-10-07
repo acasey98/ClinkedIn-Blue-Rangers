@@ -14,6 +14,7 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             Clinker inmateOJ = new Clinker
             {
                 Id = 0,
+                UniqueId = Guid.NewGuid(),
                 Name = "OJ",
                 Service = new List<Services>
             {
@@ -41,6 +42,7 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             Clinker inmateBill = new Clinker
             {
                 Id = 1,
+                UniqueId = Guid.NewGuid(),
                 Name = "Bill Cosby",
                 Service = new List<Services>
             {
@@ -67,6 +69,7 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             Clinker inmateCharles = new Clinker
             {
                 Id = 2,
+                UniqueId = Guid.NewGuid(),
                 Name = "Charles Manson",
                 Service = new List<Services>
             {
@@ -93,6 +96,7 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             Clinker inmateSnitchBitch = new Clinker
             {
                 Id = 3,
+                UniqueId = Guid.NewGuid(),
                 Name = "Daniel 'tekashi69' Hernandez",
                 Service = new List<Services>
             {

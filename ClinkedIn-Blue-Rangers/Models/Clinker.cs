@@ -8,6 +8,7 @@ namespace ClinkedIn_Blue_Rangers.Models
     public class Clinker
     {
         public int Id { get; set; }
+        public Guid UniqueId { get; set; }
         public string Name { get; set; }
         public List<Services> Service { get; set; }
         public List<Interests> Interest { get; set; }
