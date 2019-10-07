@@ -14,29 +14,61 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             {
                 Id = Guid.NewGuid(),
                 Name = "OJ",
-                Service = Services.MakeShiv,
-                Interest = Interests.Murder
+                Service = new List<Services>
+                {
+                    Services.MakeShiv,
+                    Services.FenceContraband
+                },
+                Interest = new List<Interests>
+                {
+                    Interests.Arson,
+                    Interests.IndecentExposure
+                }
             },
             new Clinker
             {
                 Id = Guid.NewGuid(),
                 Name = "Phil Cosby",
-                Service = Services.TeachToRead,
-                Interest = Interests.IndecentExposure
+                Service = new List<Services>
+                {
+                    Services.SellsTobacco,
+                    Services.TeachToRead
+                },
+                Interest = new List<Interests>
+                {
+                    Interests.Murder,
+                    Interests.Fraud
+                }
             },
             new Clinker
             {
                 Id = Guid.NewGuid(),
                 Name = "Charles Manson",
-                Service = Services.FenceContraband,
-                Interest = Interests.Fraud
+                Service = new List<Services>
+                {
+                    Services.FenceContraband,
+                    Services.MakeShiv
+                },
+                Interest = new List<Interests>
+                {
+                    Interests.UnlicensedSurgeries,
+                    Interests.Larceny
+                }
             },
             new Clinker
             {
                 Id = Guid.NewGuid(),
                 Name = "Daniel 'tekashi69' Hernandez",
-                Service = Services.SellsTobacco,
-                Interest = Interests.Arson
+                Service = new List<Services>
+                {
+                    Services.FenceContraband,
+                    Services.MakeShiv
+                },
+                Interest = new List<Interests>
+                {
+                    Interests.UnlicensedSurgeries,
+                    Interests.Larceny
+                }
             }
         };
 
@@ -45,11 +77,20 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             return _clinkers;
         }
 
+
         public Clinker Add(Clinker newClinker)
         {
             _clinkers.Add(newClinker);
 
             return newClinker;
+        }
+
+        public List<Clinker> GetInterest(string interest)
+        {
+                var clinkerWithSameInterest = _clinkers.Where(c => c.Interest.ToString() == interest)
+                    .ToList();
+                return clinkerWithSameInterest;
+
         }
     }
 }

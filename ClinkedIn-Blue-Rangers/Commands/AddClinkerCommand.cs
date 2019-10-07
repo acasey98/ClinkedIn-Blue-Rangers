@@ -9,8 +9,8 @@ namespace ClinkedIn_Blue_Rangers.Commands
     public class AddClinkerCommand
     {
         public string Name { get; set; }
-        public Services Service { get; set; }
-        public Interests Interest { get; set; }
+        public List<Services> Service { get; set; }
+        public List<Interests> Interest { get; set; }
         public List<Clinker> Friends { get; set; }
         public List<Clinker> Enemies { get; set; }
     }

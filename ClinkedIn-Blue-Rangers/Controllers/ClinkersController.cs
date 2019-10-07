@@ -9,7 +9,7 @@ using ClinkedIn_Blue_Rangers.DataAccess;
 
 namespace ClinkedIn_Blue_Rangers.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/clinkers")]
     [ApiController]
     public class ClinkersController : ControllerBase
     {
