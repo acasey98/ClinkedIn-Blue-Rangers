@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClinkedIn_Blue_Rangers.Commands;
 using ClinkedIn_Blue_Rangers.DataAccess;
 using ClinkedIn_Blue_Rangers.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -70,6 +71,15 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             var daysServedAbs = Math.Abs(daysServed.Days);
             var daysLeft = (clinker.DaysSentenced - daysServedAbs);
             return daysLeft;
+        }
+
+        [HttpPut("{id}")]
+        public void updateClinkerCommand(UpdateClinkerCommand updatedClinkerCommand, Guid)
+        {
+            var updatedClinker = new Clinker();
+            
+
+
         }
 
     }

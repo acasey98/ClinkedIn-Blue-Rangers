@@ -140,11 +140,17 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                 return clinkerWithSameInterest;
         }
 
+<<<<<<< HEAD
         public List<int> GetFriendsOfFriends(int id)
         {
             var clinker = GetById(id);
             var friends = clinker.Friends;
             return friends;
+=======
+        public void UpdateClinker(Clinker updatedClinker, Guid id)
+        {
+            Clinker clinkerToUpdate = _clinkers.First(clinkers => clinkers.Id == null);
+>>>>>>> master
         }
     }
 
