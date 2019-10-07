@@ -46,6 +46,28 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             return clinkerEnemies;
         }
 
+        // POST api/values
+        [HttpPost]
+        public IActionResult CreateClinker(AddClinkerCommand newClinkerCommand)
+        {            
+            var intId = new ClinkerRepository().GetAll().Count() + 1;
+            var newClinker = new Clinker
+            {
+                Id = intId,
+                UniqueId = Guid.NewGuid(),
+                Name = newClinkerCommand.Name,
+                Service = newClinkerCommand.Service,
+                Interest = newClinkerCommand.Interest,
+                Friends = newClinkerCommand.Friends,
+                Enemies = newClinkerCommand.Enemies
+            };
+
+            var repo = new ClinkerRepository();
+            var createdClinker = repo.Add(newClinker);
+
+            return Created($"api/clinkers/{createdClinker.Name}", createdClinker);
+        }
+
         [HttpGet("interest/{interest}")]
         public ActionResult<List<Clinker>> GetByInterest(int interest)
         {
@@ -73,14 +95,6 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             return daysLeft;
         }
 
-        //[HttpPut("{id}")]
-        //public void updateClinkerCommand(UpdateClinkerCommand updatedClinkerCommand, Guid)
-        //{
-        //    var updatedClinker = new Clinker();
-            
-
-
-        //}
 
         [HttpGet("friendsoffriends/{id}")]
         public ActionResult<List<string>> GetFriendsOfFriends(int id)
@@ -103,5 +117,20 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             return friendsOfFriends.Distinct().ToList();
         }
 
+        [HttpPut("{id}")]
+        public IActionResult UpdateClinkerCommand(UpdateClinkerCommand updatedClinkerCommand, Guid id)
+        {
+            var updatedClinker = new Clinker()
+            {            
+                Service = updatedClinkerCommand.Service,
+                Interest = updatedClinkerCommand.Interest,
+                Friends = updatedClinkerCommand.Friends,
+                Enemies = updatedClinkerCommand.Enemies
+            };
+            var repo = new ClinkerRepository();
+            var editedClinker = repo.UpdateClinker(updatedClinker, id);
+
+            return Ok(editedClinker);
+        }
     }
 }

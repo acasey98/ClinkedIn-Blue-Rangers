@@ -8,8 +8,9 @@ namespace ClinkedIn_Blue_Rangers.Commands
 {
     public class UpdateClinkerCommand
     {
-        List<Interests> Interests { get; set; }
-        List<Services> Services { get; set; }
-        List<Clinker> Enemies { get; set; }
+        public List<Interests> Interest { get; set; }
+        public List<Services> Service { get; set; }
+        public List<int> Friends { get; set; }
+        public List<int> Enemies { get; set; }
     }
 }
