@@ -152,6 +152,20 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
 
         }
 
+
+        public List<Clinker> GetFriendsOfFriends(int id)
+        {
+            var clinker = GetById(id);
+            var friends = clinker.Friends;
+            if (friends.Count > 0)
+            {
+                foreach (int friend in friends)
+                {
+                    GetById(friend);
+                }
+            }
+            return null;
+        }
         public Clinker UpdateClinker(Clinker updatedClinker, Guid id)
         {
             var clinkerToUpdate = _clinkers.First(clinkers => clinkers.UniqueId == id);
@@ -162,5 +176,4 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
             return clinkerToUpdate;
         }
     }
-
 }
