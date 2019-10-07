@@ -73,13 +73,34 @@ namespace ClinkedIn_Blue_Rangers.Controllers
             return daysLeft;
         }
 
-        [HttpPut("{id}")]
-        public void updateClinkerCommand(UpdateClinkerCommand updatedClinkerCommand, Guid)
-        {
-            var updatedClinker = new Clinker();
+        //[HttpPut("{id}")]
+        //public void updateClinkerCommand(UpdateClinkerCommand updatedClinkerCommand, Guid)
+        //{
+        //    var updatedClinker = new Clinker();
             
 
 
+        //}
+
+        [HttpGet("friendsoffriends/{id}")]
+        public ActionResult<List<Clinker>> GetFriendsOfFriends(int id)
+        {
+            var repo = new ClinkerRepository();
+            var clinker = repo.GetById(id);
+            var clinkerFriends = new List<Clinker>();
+            var friendsOfFriends = new List<Clinker>();
+            foreach (int friendId in clinker.Friends)
+            {
+                clinkerFriends.Add(repo.GetById(friendId));
+            }
+            //foreach(Clinker friend in clinkerFriends)
+            //{
+            //    foreach(int friendId in friend.Friends)
+            //    {
+            //        friendsOfFriends.Add(repo.GetById(friendId));
+            //    }
+            //}
+            return clinkerFriends;
         }
 
     }
