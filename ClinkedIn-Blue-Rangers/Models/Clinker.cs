@@ -7,12 +7,14 @@ namespace ClinkedIn_Blue_Rangers.Models
 {
     public class Clinker
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public List<Services> Service { get; set; }
         public List<Interests> Interest { get; set; }
-        public List<Clinker> Friends { get; set; }
-        public List<Clinker> Enemies { get; set; }
+        public List<int> Friends { get; set; }
+        public List<int> Enemies { get; set; }
+        public DateTime DateConvicted { get; set; }
+        public int DaysSentenced { get; set; }
     }
 
     public enum Services
