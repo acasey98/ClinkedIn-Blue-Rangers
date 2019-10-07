@@ -139,6 +139,13 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                     .ToList();
                 return clinkerWithSameInterest;
         }
+
+        public List<int> GetFriendsOfFriends(int id)
+        {
+            var clinker = GetById(id);
+            var friends = clinker.Friends;
+            return friends;
+        }
     }
 
 }

@@ -46,7 +46,7 @@ namespace ClinkedIn_Blue_Rangers.Controllers
         }
 
         [HttpGet("interest/{interest}")]
-        public ActionResult <List<Clinker>> GetByInterest(int interest)
+        public ActionResult<List<Clinker>> GetByInterest(int interest)
         {
             var repo = new ClinkerRepository();
             return repo.GetInterest(interest);
