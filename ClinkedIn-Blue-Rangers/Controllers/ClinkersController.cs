@@ -83,24 +83,24 @@ namespace ClinkedIn_Blue_Rangers.Controllers
         //}
 
         [HttpGet("friendsoffriends/{id}")]
-        public ActionResult<List<Clinker>> GetFriendsOfFriends(int id)
+        public ActionResult<List<string>> GetFriendsOfFriends(int id)
         {
             var repo = new ClinkerRepository();
             var clinker = repo.GetById(id);
             var clinkerFriends = new List<Clinker>();
-            var friendsOfFriends = new List<Clinker>();
+            var friendsOfFriends = new List<string>();
             foreach (int friendId in clinker.Friends)
             {
                 clinkerFriends.Add(repo.GetById(friendId));
             }
-            //foreach(Clinker friend in clinkerFriends)
-            //{
-            //    foreach(int friendId in friend.Friends)
-            //    {
-            //        friendsOfFriends.Add(repo.GetById(friendId));
-            //    }
-            //}
-            return clinkerFriends;
+            foreach (Clinker friend in clinkerFriends)
+            {
+                foreach (int friendId in friend.Friends)
+                {
+                    friendsOfFriends.Add(repo.GetById(friendId).Name);
+                }
+            }
+            return friendsOfFriends.Distinct().ToList();
         }
 
     }
