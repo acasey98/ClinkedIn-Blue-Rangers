@@ -139,6 +139,11 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
                     .ToList();
                 return clinkerWithSameInterest;
         }
+
+        public void UpdateClinker(Clinker updatedClinker, Guid id)
+        {
+            Clinker clinkerToUpdate = _clinkers.First(clinkers => clinkers.Id == null);
+        }
     }
 
 }
