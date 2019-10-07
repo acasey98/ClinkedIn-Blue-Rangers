@@ -152,9 +152,14 @@ namespace ClinkedIn_Blue_Rangers.DataAccess
 
         }
 
-        public void UpdateClinker(Clinker updatedClinker, Guid id)
+        public Clinker UpdateClinker(Clinker updatedClinker, Guid id)
         {
-            Clinker clinkerToUpdate = _clinkers.First(clinkers => clinkers.Id == null);
+            var clinkerToUpdate = _clinkers.First(clinkers => clinkers.UniqueId == id);
+            clinkerToUpdate.Interest = updatedClinker.Interest;
+            clinkerToUpdate.Service = updatedClinker.Service;
+            clinkerToUpdate.Friends = updatedClinker.Friends;
+            clinkerToUpdate.Enemies = updatedClinker.Enemies;
+            return clinkerToUpdate;
         }
     }
 
